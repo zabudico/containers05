@@ -330,7 +330,7 @@ EXIT;
 
 Скопируйте содержимое файла конфигурации в файл files/wp-config.php на компьютере.
 
-![cp_code_wordpress](img/Screenshot_cp_code_wordpress.jpg)
+![cp_code_wordpress](img/Screenshot_word_pass.jpg)
 
 ## Добавление файла конфигурации WordPress в Dockerfile
 
