@@ -2,7 +2,7 @@
 
 ## Цель работы
 
-Выполнив данную работу студент сможет подготовить образ контейнера для запуска веб-сайта на базе Apache HTTP Server + PHP (mod_php) + MariaDB.
+Выполнив данную работу я смогу подготовить образ контейнера для запуска веб-сайта на базе Apache HTTP Server + PHP (mod_php) + MariaDB.
 
 ## Задание
 
@@ -12,13 +12,13 @@
 
 ## Подготовка
 
-Для выполнения данной работы необходимо иметь установленный на компьютере Docker.
+Для выполнения данной работы необходимо иметь установленный на компьютере Docker. :white_check_mark:
 
-Для выполнения работы необходимо иметь опыт выполнения лабораторной работы №3.
+Для выполнения работы необходимо иметь опыт выполнения лабораторной работы №3. :white_check_mark:
 
 ## Описание выполнения работы с ответами на вопросы
 
-Создайте репозиторий `containers05` и скопируйте его себе на компьютер.
+Создал репозиторий `containers05` и скопировал его себе на компьютер.
 
 ```bash
 PS C:\Users\User\Desktop> git clone https://github.com/zabudicCloning into 'containers05'...
@@ -27,19 +27,19 @@ remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
 ```
 
-![alt text](img/Screenshot_1.jpg)
+![git clone ](img/Screenshot_1.jpg)
 
 извлечение конфигурационных файлов apache2, php, mariadb из контейнера
 
-Создайте в папке containers05 папку files, а также
+Создал в папке containers05 папку files, а также
 
 папку files/apache2 - для файлов конфигурации apache2;
 папку files/php - для файлов конфигурации php;
 папку files/mariadb - для файлов конфигурации mariadb.
 
-![alt text](img/Screenshot_files_.jpg)
+![structure](img/Screenshot_files_.jpg)
 
-Создайте в папке containers05 файл Dockerfile со следующим содержимым:
+Создал в папке containers05 файл Dockerfile со следующим содержимым:
 
 ```bash
 
@@ -54,23 +54,23 @@ RUN apt-get update && \
  apt-get clean
 ```
 
-![alt text](img/Screenshot_docker_file.jpg)
+![Dockerfile](img/Screenshot_docker_file.jpg)
 
-Постройте образ контейнера с именем apache2-php-mariadb.
+Построил образ контейнера с именем apache2-php-mariadb.
 
 ```bash
 docker build -t apache2-php-mariadb .
 ```
 
-![alt text](img/Screenshot_build.jpg)
+![docker build -t](img/Screenshot_build.jpg)
 
 ```bash
 docker images
 ```
 
-![alt text](img/Screenshot_images.jpg)
+![docker images](img/Screenshot_images.jpg)
 
-Создайте контейнер apache2-php-mariadb из образа apache2-php-mariadb и запустите его в фоновом режиме с командой запуска bash.
+Создал контейнер apache2-php-mariadb из образа apache2-php-mariadb и запустил его в фоновом режиме с командой запуска bash.
 
 ![alt text](img/Screenshot_run_-d.jpg)
 
@@ -80,7 +80,7 @@ docker ps -a
 
 ![alt text](img/Screenshot_docker_ps_-a.jpg)
 
-Скопируйте из контейнера файлы конфигурации apache2, php, mariadb в папку files/ на компьютере. Для этого, в контексте проекта, выполните команды:
+Скопировал из контейнера файлы конфигурации apache2, php, mariadb в папку files/ на компьютере. Для этого, в контексте проекта, выполнил команды:
 
 ```bash
 docker cp apache2-php-mariadb:/etc/apache2/sites-available/000-default.conf files/apache2/
@@ -91,7 +91,7 @@ docker cp apache2-php-mariadb:/etc/mysql/mariadb.conf.d/50-server.cnf files/mari
 
 ![cp](img/Screenshot_cp.jpg)
 
-После выполнения команд в папке files/ должны появиться файлы конфигурации apache2, php, mariadb. Проверьте их наличие. Остановите и удалите контейнер apache2-php-mariadb.
+После выполнения команд в папке files/ должны появиться файлы конфигурации apache2, php, mariadb. Проверил их наличие. Остановил и удалил контейнер apache2-php-mariadb.
 
 ![structure](img/Screenshot_structure.jpg)
 
@@ -107,19 +107,21 @@ docker ps -a
 
 ### Конфигурационный файл apache2
 
-Откройте файл files/apache2/000-default.conf, найдите строку #ServerName www.example.com и замените её на ServerName localhost.
+Открыл файл files/apache2/000-default.conf, нашёл строку #ServerName www.example.com и заменил её на ServerName localhost.
 
-Найдите строку ServerAdmin webmaster@localhost и замените в ней почтовый адрес на свой.
+Нашёл строку ServerAdmin webmaster@localhost и заменил в ней почтовый адрес на свой.
 
-После строки DocumentRoot /var/www/html добавьте следующие строки:
+После строки DocumentRoot /var/www/html добавил следующие строки:
 
-DirectoryIndex index.php index.html
+```bash
+ DirectoryIndex index.php index.html
+```
 
-Сохраните файл и закройте.
+Сохранил файл и закрыл.
 
 ![000-default.conf](img/Screenshot_20.jpg)
 
-В конце файла files/apache2/apache2.conf добавьте следующую строку:
+В конце файла files/apache2/apache2.conf добавил следующую строку:
 
 ServerName localhost
 
@@ -127,11 +129,11 @@ ServerName localhost
 
 ### Конфигурационный файл php
 
-Откройте файл `files/php/php.ini`, найдите строку `;error_log = php_errors.log` и замените её на `error_log = /var/log/php_errors.log`.
+Открыл файл `files/php/php.ini`, нашёл строку `;error_log = php_errors.log` и заменил её на `error_log = /var/log/php_errors.log`.
 
 ![php_ini](img/Screenshot_php_ini.jpg)
 
-Настройте параметры memory_limit, upload_max_filesize, post_max_size и max_execution_time следующим образом:
+Настроил параметры memory_limit, upload_max_filesize, post_max_size и max_execution_time следующим образом:
 
 ```bash
 memory_limit = 128M
@@ -148,19 +150,19 @@ max_execution_time = 120
 
 ![max_execution_time](img/Screenshot_max_execution_time.jpg)
 
-Сохраните файл и закройте.
+Сохранил файл и закрыл.
 
 ### Конфигурационный файл mariadb
 
-Откройте файл files/mariadb/50-server.cnf, найдите строку #log_error = /var/log/mysql/error.log и раскомментируйте её.
+Открыл файл files/mariadb/50-server.cnf, нашёл строку #log_error = /var/log/mysql/error.log и раскомментировал её.
 
 ![50-server-cnf-log_error](img/Screenshot_50-server-cnf-log_error.jpg)
 
-Сохраните файл и закройте.
+Сохранил файл и закрыл.
 
 ## Создание скрипта запуска
 
-Создайте в папке `files` папку `supervisor` и файл `supervisord.conf` со следующим содержимым:
+Создал в папке `files` папку `supervisor` и файл `supervisord.conf` со следующим содержимым:
 
 ```bash
 
@@ -192,9 +194,9 @@ user=mysql
 
 ## Создание Dockerfile
 
-Откройте файл `Dockerfile` и добавьте в него следующие строки:
+Открыл файл `Dockerfile` и добавил в него следующие строки:
 
-- после инструкции `FROM` ... добавьте монтирование томов:
+- после инструкции `FROM` ... добавил монтирование томов:
 
 ```bash
 # mount volume for mysql data
@@ -204,16 +206,16 @@ VOLUME /var/lib/mysql
 VOLUME /var/log
 ```
 
-- в инструкции `RUN` ... добавьте установку пакета supervisor.
+- в инструкции `RUN` ... добавил установку пакета supervisor.
 
-- после инструкции `RUN` ... добавьте копирование и распаковку сайта WordPress:
+- после инструкции `RUN` ... добавил копирование и распаковку сайта WordPress:
 
 ```bash
 # add wordpress files to /var/www/html
 ADD https://wordpress.org/latest.tar.gz /var/www/html/
 ```
 
-- после копирования файлов WordPress добавьте копирование конфигурационных файлов apache2, php, mariadb, а также скрипта запуска:
+- после копирования файлов WordPress добавил копирование конфигурационных файлов apache2, php, mariadb, а также скрипта запуска:
 
 ```bash
 
@@ -231,16 +233,16 @@ COPY files/mariadb/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY files/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 ```
 
-- для функционирования mariadb создайте папку `/var/run/mysqld` и установите права на неё:
+- для функционирования mariadb Создал папку `/var/run/mysqld` и установил права на неё:
 
 ```bash
 # create mysql socket directory
 RUN mkdir /var/run/mysqld && chown mysql:mysql /var/run/mysqld
 ```
 
-- откройте порт 80.
+- Открыл порт 80.
 
-- добавьте команду запуска supervisord:
+- добавил команду запуска supervisord:
 
 ```bash
 # start supervisor
@@ -287,7 +289,7 @@ CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
 
 ```
 
-Соберите образ контейнера с именем `apache2-php-mariadb` и запустите контейнер `apache2-php-mariadb` из образа `apache2-php-mariadb`. Проверьте наличие сайта WordPress в папке `/var/www/html/`. Проверьте изменения конфигурационного файла `apache2`.
+Собрал образ контейнера с именем `apache2-php-mariadb` и запустил контейнер `apache2-php-mariadb` из образа `apache2-php-mariadb`. Проверил наличие сайта WordPress в папке `/var/www/html/`. Проверил изменения конфигурационного файла `apache2`.
 
 ```bash
 
@@ -299,7 +301,7 @@ ls  /var/www/html
 
 ## Создание базы данных и пользователя
 
-Создайте базу данных `wordpress` и пользователя `wordpress` с паролем `wordpress` в контейнере `apache2-php-mariadb`. Для этого, в контейнере `apache2-php-mariadb`, выполните команды:
+Создал базу данных `wordpress` и пользователя `wordpress` с паролем `wordpress` в контейнере `apache2-php-mariadb`. Для этого, в контейнере `apache2-php-mariadb`, выполнил команды:
 
 ```mysql
 
@@ -314,7 +316,7 @@ EXIT;
 
 ## Создание файла конфигурации WordPress
 
-Откройте в браузере сайт WordPress по адресу http://localhost/. Укажите параметры подключения к базе данных:
+Открыл в браузере сайт WordPress по адресу http://localhost/. Указал параметры подключения к базе данных:
 
 - имя базы данных: wordpress;
 - имя пользователя: wordpress;
@@ -328,13 +330,13 @@ EXIT;
 
 ![word_press](img/copy_wordpress_code.png)
 
-Скопируйте содержимое файла конфигурации в файл files/wp-config.php на компьютере.
+Скопировал содержимое файла конфигурации в файл files/wp-config.php на компьютере.
 
 ![cp_code_wordpress](img/Screenshot_word_pass.jpg)
 
 ## Добавление файла конфигурации WordPress в Dockerfile
 
-Добавьте в файл Dockerfile следующие строки:
+добавил в файл Dockerfile следующие строки:
 
 ```bash
 # copy the configuration file for wordpress from files/ directory
@@ -343,7 +345,7 @@ COPY files/wp-config.php /var/www/html/wordpress/wp-config.php
 
 ## Запуск и тестирование
 
-Пересоберите образ контейнера с именем `apache2-php-mariadb` и запустите контейнер `apache2-php-mariadb` из образа `apache2-php-mariadb`. Проверьте работоспособность сайта WordPress.
+ПереСобрал образ контейнера с именем `apache2-php-mariadb` и запустил контейнер `apache2-php-mariadb` из образа `apache2-php-mariadb`. Проверил работоспособность сайта WordPress.
 
 ```bash
 docker build -t apache2-php-mariadb .
@@ -377,18 +379,20 @@ ls /var/www/html/wordpress
 
 ### 3. Зачем нужен файл wp-config.php?
 
-В `wp-config.php` содержатся настройки WordPress. Например там находятся имя хоста, пароль от базы данных и.т.д
+В `wp-config.php` содержатся настройки WordPress. Там находятся имя хоста, пароль от базы данных и.т.д
 
 ### 4. За что отвечает параметр post_max_size в файле конфигурации php?
 
 `post_max_size` указывает максимальный размер `body` для `POST` запросов
 
-### 5. Укажите, на ваш взгляд, какие недостатки есть в созданном образе контейнера?
+### 5. Указал, на ваш взгляд, какие недостатки есть в созданном образе контейнера?
 
 База данных и веб-сервер запускаются в одном и том же контейнере. Их следовало бы разделить и запустить в двух разных для безопасности, удобства и расширяемости.
 
 ## Выводы
 
-1. Запустили сайт wordpress внутри контейнера, настроив веб-сервер (Apache) и базу данных (MariaDB).
-2. Добавили `supervisor` для управления несколькими сервисами.
+Выполняя эту работу, я сделал следующее:
+
+1. Запустил сайт wordpress внутри контейнера, настроив веб-сервер (Apache) и базу данных (MariaDB).
+2. Добавил `supervisor` для управления несколькими сервисами.
 3. Установил Wordpress и сконфигурировал его.
