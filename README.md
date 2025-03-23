@@ -20,10 +20,12 @@
 
 Создайте репозиторий `containers05` и скопируйте его себе на компьютер.
 
+```bash
 PS C:\Users\User\Desktop> git clone https://github.com/zabudicCloning into 'containers05'...
 remote: Counting objects: 100% (3/3), done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+```
 
 ![alt text](img/Screenshot_1.jpg)
 
@@ -39,6 +41,8 @@ remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
 
 Создайте в папке containers05 файл Dockerfile со следующим содержимым:
 
+```bash
+
 # create from debian image
 
 FROM debian:latest
@@ -48,6 +52,7 @@ FROM debian:latest
 RUN apt-get update && \
  apt-get install -y apache2 php libapache2-mod-php php-mysql mariadb-server && \
  apt-get clean
+```
 
 ![alt text](img/Screenshot_docker_file.jpg)
 
@@ -116,7 +121,7 @@ DirectoryIndex index.php index.html
 
 ServerName localhost
 
-![alt text](img/img/Screenshot_20.jpg)
+![alt text](img/Screenshot_20.jpg)
 
 ### Конфигурационный файл php
 
