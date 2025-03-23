@@ -25,7 +25,7 @@ remote: Counting objects: 100% (3/3), done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
 
-![alt text](img\Screenshot_1.jpg)
+![alt text](img/Screenshot_1.jpg)
 
 извлечение конфигурационных файлов apache2, php, mariadb из контейнера
 
@@ -35,7 +35,7 @@ remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
 папку files/php - для файлов конфигурации php;
 папку files/mariadb - для файлов конфигурации mariadb.
 
-![alt text](img\Screenshot_files_.jpg)
+![alt text](img/Screenshot_files_.jpg)
 
 Создайте в папке containers05 файл Dockerfile со следующим содержимым:
 
@@ -49,7 +49,7 @@ RUN apt-get update && \
  apt-get install -y apache2 php libapache2-mod-php php-mysql mariadb-server && \
  apt-get clean
 
-![alt text](img\Screenshot_docker_file.jpg)
+![alt text](img/Screenshot_docker_file.jpg)
 
 Постройте образ контейнера с именем apache2-php-mariadb.
 
@@ -57,23 +57,23 @@ RUN apt-get update && \
 docker build -t apache2-php-mariadb .
 ```
 
-![alt text](img\Screenshot_build.jpg)
+![alt text](img/Screenshot_build.jpg)
 
 ```bash
 docker images
 ```
 
-![alt text](img\Screenshot_images.jpg)
+![alt text](img/Screenshot_images.jpg)
 
 Создайте контейнер apache2-php-mariadb из образа apache2-php-mariadb и запустите его в фоновом режиме с командой запуска bash.
 
-![alt text](img\Screenshot_run_-d.jpg)
+![alt text](img/Screenshot_run_-d.jpg)
 
 ```bash
 docker ps -a
 ```
 
-![alt text](img\Screenshot_docker_ps_-a.jpg)
+![alt text](img/Screenshot_docker_ps_-a.jpg)
 
 Скопируйте из контейнера файлы конфигурации apache2, php, mariadb в папку files/ на компьютере. Для этого, в контексте проекта, выполните команды:
 
@@ -84,11 +84,11 @@ docker cp apache2-php-mariadb:/etc/php/8.2/apache2/php.ini files/php/
 docker cp apache2-php-mariadb:/etc/mysql/mariadb.conf.d/50-server.cnf files/mariadb/
 ```
 
-![alt text](img\Screenshot_cp.jpg)
+![alt text](img/Screenshot_cp.jpg)
 
 После выполнения команд в папке files/ должны появиться файлы конфигурации apache2, php, mariadb. Проверьте их наличие. Остановите и удалите контейнер apache2-php-mariadb.
 
-![alt text](img\Screenshot_structure.jpg)
+![alt text](img/Screenshot_structure.jpg)
 
 ```bash
 docker stop apache2-php-mariadb
@@ -96,7 +96,7 @@ docker rm apache2-php-mariadb
 docker ps -a
 ```
 
-![alt text](img\Screenshot_stop_rm_ps-a.jpg)
+![alt text](img/Screenshot_stop_rm_ps-a.jpg)
 
 ## Настройка конфигурационных файлов
 
@@ -116,7 +116,7 @@ DirectoryIndex index.php index.html
 
 ServerName localhost
 
-![alt text](img\img\Screenshot_20.jpg)
+![alt text](img/img/Screenshot_20.jpg)
 
 ### Конфигурационный файл php
 
